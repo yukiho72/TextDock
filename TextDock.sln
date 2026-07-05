@@ -1,0 +1,36 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FDF991A5-ADAD-4D02-B16F-F48B0CB61264}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextDock", "src\TextDock\TextDock.csproj", "{8C5995CC-0994-45D4-972D-9F43A4131EFD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{4809948E-D7A4-4415-9220-A46A7E7D0CF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextDock.Tests", "tests\TextDock.Tests\TextDock.Tests.csproj", "{FB903A9C-42C4-482F-9BB5-526943D37980}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C5995CC-0994-45D4-972D-9F43A4131EFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C5995CC-0994-45D4-972D-9F43A4131EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C5995CC-0994-45D4-972D-9F43A4131EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C5995CC-0994-45D4-972D-9F43A4131EFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB903A9C-42C4-482F-9BB5-526943D37980}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB903A9C-42C4-482F-9BB5-526943D37980}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB903A9C-42C4-482F-9BB5-526943D37980}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB903A9C-42C4-482F-9BB5-526943D37980}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8C5995CC-0994-45D4-972D-9F43A4131EFD} = {FDF991A5-ADAD-4D02-B16F-F48B0CB61264}
+		{FB903A9C-42C4-482F-9BB5-526943D37980} = {4809948E-D7A4-4415-9220-A46A7E7D0CF0}
+	EndGlobalSection
+EndGlobal

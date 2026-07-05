@@ -1,0 +1,23 @@
+<Window x:Class="TextDock.Views.NameInputDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{DynamicResource NameInput_Title}"
+        SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False"
+        Background="{DynamicResource BgBrush}"
+        Foreground="{DynamicResource FgBrush}"
+        FontFamily="{DynamicResource AppFontFamily}"
+        FontSize="{DynamicResource AppFontSize}">
+    <StackPanel Margin="12">
+        <TextBlock Text="{DynamicResource NameInput_Instruction}" Margin="0,0,0,6"/>
+        <TextBox x:Name="NameBox" Width="320"
+                 Background="{DynamicResource BgBrush}"
+                 Foreground="{DynamicResource FgBrush}"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
+            <Button Content="{DynamicResource NameInput_Btn_OK}" Width="80" IsDefault="True" Click="Ok_Click"/>
+            <Button Content="{DynamicResource NameInput_Btn_Cancel}" Width="80" Margin="8,0,0,0" IsCancel="True"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

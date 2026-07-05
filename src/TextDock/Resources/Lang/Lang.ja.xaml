@@ -1,0 +1,96 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+    <!-- App -->
+    <sys:String x:Key="App_Tray_Show">表示</sys:String>
+    <sys:String x:Key="App_Tray_Settings">設定 / Settings</sys:String>
+    <sys:String x:Key="App_Tray_OpenFolder">メモフォルダを開く</sys:String>
+    <sys:String x:Key="App_Tray_Exit">終了 / Exit</sys:String>
+    <sys:String x:Key="App_Err_SettingsCorrupt">設定ファイルが破損しています。初期化しますか？</sys:String>
+    <sys:String x:Key="App_Err_HotkeyFailed">{0} は他のアプリで使用中のため登録できませんでした。設定画面でホットキーを変更してください。</sys:String>
+    <sys:String x:Key="App_Err_FolderCreateFailed">初期フォルダを作成できませんでした。保存場所を選択してください。</sys:String>
+    <sys:String x:Key="App_FolderDialog_Desc">メモ保存フォルダを選択してください</sys:String>
+
+    <!-- MainWindow -->
+    <sys:String x:Key="Main_Btn_New">新規</sys:String>
+    <sys:String x:Key="Main_Btn_Reload">再読込</sys:String>
+    <sys:String x:Key="Main_Btn_ChangeMode">モード変更</sys:String>
+    <sys:String x:Key="Main_Chk_CloseAfterPaste">貼り付け後に閉じる</sys:String>
+    <sys:String x:Key="Main_Ctx_Edit">編集</sys:String>
+    <sys:String x:Key="Main_Ctx_Rename">名前変更</sys:String>
+    <sys:String x:Key="Main_Ctx_Delete">削除</sys:String>
+    <sys:String x:Key="Main_Ctx_CreateFromClip">クリップボードから作成</sys:String>
+    <sys:String x:Key="Main_Ctx_Copy">コピー</sys:String>
+    <sys:String x:Key="Main_Ctx_Paste">貼り付け</sys:String>
+    <sys:String x:Key="Main_Ctx_AppendFromClip">クリップボードから追記</sys:String>
+    <sys:String x:Key="Main_Ctx_SendPS">PowerShellに送る</sys:String>
+    <sys:String x:Key="Main_Ctx_SendPS7">PowerShell 7に送る</sys:String>
+    <sys:String x:Key="Main_Ctx_BrowseFolder">フォルダを開く...</sys:String>
+    <sys:String x:Key="Main_Err_FolderNotFound">メモフォルダが見つかりません: {0}</sys:String>
+    <sys:String x:Key="Main_Err_FileLoadFailed">ファイルの読み込みに失敗しました: {0}</sys:String>
+    <sys:String x:Key="Main_Err_NoTarget">対象アプリがありません</sys:String>
+    <sys:String x:Key="Main_Err_PasteFailed">貼り付けに失敗しました: {0}</sys:String>
+    <sys:String x:Key="Main_Err_AppendFailed">追記に失敗しました: {0}</sys:String>
+    <sys:String x:Key="Main_Err_CreateFailed">ファイルの作成に失敗しました: {0}</sys:String>
+    <sys:String x:Key="Main_Err_DeleteFailed">ファイルの削除に失敗しました: {0}</sys:String>
+    <sys:String x:Key="Main_Err_RenameFailed">ファイルの名前変更に失敗しました: {0}</sys:String>
+    <sys:String x:Key="Main_Confirm_Delete">{0} を削除しますか？</sys:String>
+    <sys:String x:Key="Main_Confirm_RemoveHistory">「{0}」を履歴から削除しますか？</sys:String>
+    <sys:String x:Key="Main_Status_NoTarget">(なし)</sys:String>
+    <sys:String x:Key="Main_Status_RowsSelected">{0}行選択中</sys:String>
+
+    <!-- SettingsWindow -->
+    <sys:String x:Key="Settings_Title">設定 - TextDock</sys:String>
+    <sys:String x:Key="Settings_Grp_Basic">基本</sys:String>
+    <sys:String x:Key="Settings_Lbl_MemoFolder">メモ保存フォルダ</sys:String>
+    <sys:String x:Key="Settings_Btn_Browse">参照...</sys:String>
+    <sys:String x:Key="Settings_Lbl_Hotkey">ホットキー</sys:String>
+    <sys:String x:Key="Settings_Lbl_MaxLines">読み込み行数上限</sys:String>
+    <sys:String x:Key="Settings_Grp_Search">検索</sys:String>
+    <sys:String x:Key="Settings_Chk_MemoPartial">メモ一覧を部分一致で検索する</sys:String>
+    <sys:String x:Key="Settings_Chk_LinePartial">行一覧を部分一致で検索する</sys:String>
+    <sys:String x:Key="Settings_Grp_Theme">テーマ</sys:String>
+    <sys:String x:Key="Settings_Grp_Font">フォント</sys:String>
+    <sys:String x:Key="Settings_Lbl_FontName">フォント名</sys:String>
+    <sys:String x:Key="Settings_Lbl_FontSize">フォントサイズ</sys:String>
+    <sys:String x:Key="Settings_Grp_CustomColor">カスタムカラー（テーマが Custom のとき有効）</sys:String>
+    <sys:String x:Key="Settings_Lbl_BgColor">背景色</sys:String>
+    <sys:String x:Key="Settings_Lbl_TextColor">文字色</sys:String>
+    <sys:String x:Key="Settings_Lbl_SelColor">選択色</sys:String>
+    <sys:String x:Key="Settings_Grp_Paste">貼り付け</sys:String>
+    <sys:String x:Key="Settings_Lbl_DefaultMethod">デフォルト貼り付け方式</sys:String>
+    <sys:String x:Key="Settings_Chk_ClipProtect">クリップボード保護を有効にする</sys:String>
+    <sys:String x:Key="Settings_Chk_PasteNewline">貼り付け時に改行を付ける</sys:String>
+    <sys:String x:Key="Settings_Chk_PsNewline">PowerShellコマンドに改行を付ける</sys:String>
+    <sys:String x:Key="Settings_Grp_Timing">タイミング (ms)</sys:String>
+    <sys:String x:Key="Settings_Lbl_ClipDelay">Clipboard 貼り付け前待機 (50-500)</sys:String>
+    <sys:String x:Key="Settings_Lbl_WmDelay">WM_CHAR 文字間ディレイ (5-200)</sys:String>
+    <sys:String x:Key="Settings_Lbl_SiDelay">SendInput キーイベント間隔 (5-200)</sys:String>
+    <sys:String x:Key="Settings_Grp_AppSettings">アプリ別設定</sys:String>
+    <sys:String x:Key="Settings_Btn_Set">設定</sys:String>
+    <sys:String x:Key="Settings_Btn_Remove">解除</sys:String>
+    <sys:String x:Key="Settings_Btn_OK">OK</sys:String>
+    <sys:String x:Key="Settings_Btn_Cancel">キャンセル</sys:String>
+    <sys:String x:Key="Settings_Grp_Language">言語 / Language</sys:String>
+    <sys:String x:Key="Settings_Err_MaxLines">読み込み行数上限は1以上の数値を入力してください。</sys:String>
+    <sys:String x:Key="Settings_Err_FontSize">フォントサイズは6〜72の数値を入力してください。</sys:String>
+    <sys:String x:Key="Settings_Err_Timing">タイミングの値が設定範囲外です。</sys:String>
+    <sys:String x:Key="Settings_Err_Hotkey">ホットキーが不正です。修飾キー＋キーの組み合わせを入力してください。</sys:String>
+    <sys:String x:Key="Settings_Err_HotkeyConflict">{0} は他のアプリで使用中のため登録できませんでした。元のホットキーに戻します。</sys:String>
+    <sys:String x:Key="Settings_FolderDialog_Desc">メモ保存フォルダを選択してください</sys:String>
+
+    <!-- EditorWindow -->
+    <sys:String x:Key="Editor_Btn_Save">保存</sys:String>
+    <sys:String x:Key="Editor_Btn_Cancel">キャンセル</sys:String>
+    <sys:String x:Key="Editor_Title_New">新規 - TextDock</sys:String>
+    <sys:String x:Key="Editor_Title_Edit">{0} - TextDock</sys:String>
+    <sys:String x:Key="Editor_Err_SaveFailed">ファイルの保存に失敗しました: {0}
+{1}</sys:String>
+    <sys:String x:Key="Editor_Confirm_Save">変更を保存しますか？</sys:String>
+
+    <!-- NameInputDialog -->
+    <sys:String x:Key="NameInput_Title">ファイル名</sys:String>
+    <sys:String x:Key="NameInput_Instruction">ファイル名を入力してください</sys:String>
+    <sys:String x:Key="NameInput_Btn_OK">OK</sys:String>
+    <sys:String x:Key="NameInput_Btn_Cancel">キャンセル</sys:String>
+</ResourceDictionary>
