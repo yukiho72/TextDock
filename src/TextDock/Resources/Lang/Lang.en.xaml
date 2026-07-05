@@ -36,6 +36,8 @@
     <sys:String x:Key="Main_Err_RenameFailed">Failed to rename file: {0}</sys:String>
     <sys:String x:Key="Main_Confirm_Delete">Delete {0}?</sys:String>
     <sys:String x:Key="Main_Confirm_RemoveHistory">Remove "{0}" from history?</sys:String>
+    <sys:String x:Key="Main_Confirm_RemoveMissingFolder">Folder not found: {0}
+Remove it from history?</sys:String>
     <sys:String x:Key="Main_Status_NoTarget">(none)</sys:String>
     <sys:String x:Key="Main_Status_RowsSelected">{0} rows selected</sys:String>
 

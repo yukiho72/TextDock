@@ -490,8 +490,11 @@ public partial class MainWindow : Window
                 Header = Path.GetFileName(folder),
                 Tag = folder,
                 IsChecked = isCurrent,
-                IsEnabled = Directory.Exists(folder),
             };
+            // 存在しないフォルダは無効化せずグレー表示に留める。
+            // 無効化するとマウスイベントが届かず、右クリックでの履歴削除ができなくなるため。
+            if (!Directory.Exists(folder))
+                item.Foreground = System.Windows.Media.Brushes.Gray;
             item.Click += FolderMenuItem_Click;
             if (!isCurrent)
                 item.PreviewMouseRightButtonUp += FolderMenuItem_RightClick;
@@ -510,8 +513,24 @@ public partial class MainWindow : Window
 
     private void FolderMenuItem_Click(object sender, RoutedEventArgs e)
     {
-        if (sender is MenuItem { Tag: string path })
+        if (sender is not MenuItem { Tag: string path })
+            return;
+        if (Directory.Exists(path))
+        {
             SwitchFolder(path);
+            return;
+        }
+        // 現在のフォルダは履歴削除の対象にしない（切断ドライブの再接続待ちの可能性がある）
+        if (string.Equals(path, _app.Settings.MemoFolder, StringComparison.OrdinalIgnoreCase))
+            return;
+        var result = System.Windows.MessageBox.Show(
+            Loc.S("Main_Confirm_RemoveMissingFolder", Path.GetFileName(path)),
+            "TextDock", MessageBoxButton.YesNo, MessageBoxImage.Question);
+        if (result == MessageBoxResult.Yes)
+        {
+            _app.Settings.RecentFolders.RemoveAll(f => string.Equals(f, path, StringComparison.OrdinalIgnoreCase));
+            _app.SettingsService.Save(_app.Settings);
+        }
     }
 
     private void FolderMenuItem_RightClick(object sender, MouseButtonEventArgs e)
