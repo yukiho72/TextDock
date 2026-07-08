@@ -49,7 +49,7 @@ TextDock は Windows 用の常駐型定型文ランチャーです。ホット�
 ## 動作環境
 
 - Windows 10 / 11
-- [.NET 8 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0)
 
 ## ビルド
 

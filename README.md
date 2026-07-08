@@ -49,7 +49,7 @@ The two tools complement each other: TextDock sends text *out* to your apps, Tex
 ## Requirements
 
 - Windows 10 / 11
-- [.NET 8 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0)
 
 ## Build
 
