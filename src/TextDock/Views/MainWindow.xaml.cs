@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using TextDock.Services;
 using Clipboard = System.Windows.Clipboard;
@@ -33,8 +34,29 @@ public partial class MainWindow : Window
     [DllImport("user32.dll")]
     private static extern bool IsWindow(IntPtr hWnd);
 
+    [DllImport("user32.dll")]
+    private static extern IntPtr MonitorFromPoint(POINT pt, uint dwFlags);
+
+    [DllImport("shcore.dll")]
+    private static extern int GetDpiForMonitor(IntPtr hmonitor, int dpiType, out uint dpiX, out uint dpiY);
+
+    [DllImport("user32.dll")]
+    private static extern bool SetWindowPos(
+        IntPtr hWnd, IntPtr hWndInsertAfter, int x, int y, int cx, int cy, uint uFlags);
+
+    [StructLayout(LayoutKind.Sequential)]
+    private struct POINT
+    {
+        public int X;
+        public int Y;
+    }
+
     private const uint EVENT_SYSTEM_FOREGROUND = 0x0003;
     private const uint WINEVENT_OUTOFCONTEXT = 0x0000;
+    private const uint MONITOR_DEFAULTTONEAREST = 0x0002;
+    private const int MDT_EFFECTIVE_DPI = 0;
+    private const uint SWP_NOZORDER = 0x0004;
+    private const uint SWP_NOACTIVATE = 0x0010;
 
     private readonly App _app;
     private readonly PasteService _pasteService = new();
@@ -136,24 +158,33 @@ public partial class MainWindow : Window
 
     private void ShowAtCursor()
     {
-        // マウスカーソル付近へ表示し、画面外は自動補正する（仕様書23章）
+        // マウスカーソル付近へ表示し、画面外は自動補正する（仕様書23章）。
+        // PerMonitorV2 環境ではモニターごとにDPIが異なるため、物理ピクセルで
+        // 直接配置する。Width/Height(DIP) を移動先モニターのDPIで物理サイズへ換算する。
         var pos = System.Windows.Forms.Cursor.Position;
         var area = Screen.FromPoint(pos).WorkingArea;
-        var dpi = VisualTreeHelper.GetDpi(this);
 
-        var left = pos.X / dpi.DpiScaleX + 8;
-        var top = pos.Y / dpi.DpiScaleY + 8;
-        var areaRight = area.Right / dpi.DpiScaleX;
-        var areaBottom = area.Bottom / dpi.DpiScaleY;
-        var areaLeft = area.Left / dpi.DpiScaleX;
-        var areaTop = area.Top / dpi.DpiScaleY;
+        var monitor = MonitorFromPoint(new POINT { X = pos.X, Y = pos.Y }, MONITOR_DEFAULTTONEAREST);
+        double scaleX = 1.0, scaleY = 1.0;
+        if (GetDpiForMonitor(monitor, MDT_EFFECTIVE_DPI, out var dpiX, out var dpiY) == 0)
+        {
+            scaleX = dpiX / 96.0;
+            scaleY = dpiY / 96.0;
+        }
 
-        if (left + Width > areaRight) left = areaRight - Width;
-        if (top + Height > areaBottom) top = areaBottom - Height;
-        Left = Math.Max(areaLeft, left);
-        Top = Math.Max(areaTop, top);
+        var physW = (int)Math.Round(Width * scaleX);
+        var physH = (int)Math.Round(Height * scaleY);
+
+        var left = pos.X + 8;
+        var top = pos.Y + 8;
+        if (left + physW > area.Right) left = area.Right - physW;
+        if (top + physH > area.Bottom) top = area.Bottom - physH;
+        left = Math.Max(area.Left, left);
+        top = Math.Max(area.Top, top);
 
         Show();
+        var hwnd = new WindowInteropHelper(this).Handle;
+        SetWindowPos(hwnd, IntPtr.Zero, left, top, physW, physH, SWP_NOZORDER | SWP_NOACTIVATE);
         Activate();
         MemoSearchBox.Focus();
         UpdateStatus();

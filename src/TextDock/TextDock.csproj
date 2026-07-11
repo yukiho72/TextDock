@@ -7,6 +7,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- WPFホスト側はapp.manifestでDPIを宣言し、WinForms側はSetHighDpiModeで設定する
+         正当な構成のため、WinFormsアナライザーのWFO0003を抑制する -->
+    <NoWarn>WFO0003</NoWarn>
   </PropertyGroup>
 
 </Project>

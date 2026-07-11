@@ -26,6 +26,11 @@ public partial class App : Application
     {
         base.OnStartup(e);
 
+        // WPFはapp.manifestでPerMonitorV2を宣言しているが、WinForms製の
+        // トレイメニュー等をモニター別DPIで正しくスケーリングさせるには
+        // WinForms側にも明示が必要（最初のWinFormsコントロール生成前に呼ぶ）。
+        System.Windows.Forms.Application.SetHighDpiMode(System.Windows.Forms.HighDpiMode.PerMonitorV2);
+
         // 多重起動の防止（仕様書5章）
         _mutex = new Mutex(initiallyOwned: true, "TextDock_SingleInstance", out var createdNew);
         if (!createdNew)
